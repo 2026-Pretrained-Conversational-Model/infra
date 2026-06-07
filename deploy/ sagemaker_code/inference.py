@@ -11,7 +11,10 @@ DEFAULT_MAX_NEW_TOKENS = int(os.environ.get("DEFAULT_MAX_NEW_TOKENS", "800"))
 DO_SAMPLE = os.environ.get("DO_SAMPLE", "false").lower() == "true"
 TEMPERATURE = float(os.environ.get("TEMPERATURE", "0.0"))
 
+print("### CUSTOM INFERENCE IMPORTED ###")
+
 def model_fn(model_dir):
+    print("### model_fn called ###", MODEL_ID, TOKENIZER_ID)
     tok = AutoTokenizer.from_pretrained(TOKENIZER_ID, trust_remote_code=True)
     tok.pad_token = tok.eos_token
     tok.padding_side = "right"
